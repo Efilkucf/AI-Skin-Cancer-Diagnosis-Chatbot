@@ -7,58 +7,54 @@ import tensorflow as tf
 import io
 import os
 import aiohttp
+import gdown
 from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from typing import List
-from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from dotenv import load_dotenv
-import os
-import os
-import requests
 from pathlib import Path
 from tensorflow.keras.models import load_model
 
-
+# Load environment variables
 load_dotenv()
 
 AZURE_ENDPOINT = "https://models.github.ai/inference"
 AZURE_MODEL = "openai/gpt-4.1"
-AZURE_TOKEN = os.getenv("AZURE_API_KEY")  # Make sure this is set in your environment
+AZURE_TOKEN = os.getenv("AZURE_API_KEY")
 
+# Initialize Azure client
 azure_client = ChatCompletionsClient(
     endpoint=AZURE_ENDPOINT,
     credential=AzureKeyCredential(AZURE_TOKEN),
 )
 
-
+# FastAPI app setup
 app = FastAPI()
 
+# Download the model from Google Drive using gdown
 def download_model():
-    model_url = "https://drive.google.com/uc?export=download&id=1zN6KmX_vY9R5XqE8oGjwa-9X8TYN4JFL"
     model_path = Path("model/best_model.keras")
     model_path.parent.mkdir(parents=True, exist_ok=True)
 
     if not model_path.exists():
         print("Downloading model...")
-        response = requests.get(model_url)
-        with open(model_path, "wb") as f:
-            f.write(response.content)
+        gdown.download(id="1zN6KmX_vY9R5XqE8oGjwa-9X8TYN4JFL", output=str(model_path), quiet=False)
         print("Model downloaded.")
 
 download_model()
 model = load_model("model/best_model.keras")
 
+# Mount frontend static files
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")
 def read_root():
     return FileResponse("frontend/index.html")
 
-
-# CORS settings
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -67,7 +63,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+# Predict endpoint
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     image = Image.open(io.BytesIO(await file.read())).resize((128, 128)).convert("RGB")
@@ -86,17 +82,15 @@ async def predict(file: UploadFile = File(...)):
         "confidence": prob
     }
 
-# Define request model for chat
-class ChatRequest(BaseModel):
-    message: str
-
+# Request models for chat
 class Message(BaseModel):
-    role: str  # "user", "assistant", or "system"
+    role: str
     content: str
 
 class ChatHistoryRequest(BaseModel):
     chat_history: List[Message]
 
+# Chat endpoint
 @app.post("/ask")
 async def ask_chat(req: ChatHistoryRequest):
     messages = [{"role": "system", "content": "You are an empathetic AI assistant helping users interpret skin cancer analysis results and provide medical guidance."}]
