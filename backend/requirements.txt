@@ -1,10 +1,9 @@
 fastapi
 uvicorn
-aiohttp
-python-multipart
-pillow
-numpy
-tensorflow
-azure-core
-@azure-rest/ai-inference
 python-dotenv
+tensorflow
+numpy
+pillow
+requests
+aiohttp
+azure-ai-inference
