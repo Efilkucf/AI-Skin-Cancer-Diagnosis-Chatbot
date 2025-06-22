@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 python-dotenv
-tensorflow
+tensorflow-cpu==2.13.0
 numpy
 pillow
 requests
