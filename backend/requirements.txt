@@ -7,3 +7,5 @@ pillow
 requests
 aiohttp
 azure-ai-inference
+gdown
+
