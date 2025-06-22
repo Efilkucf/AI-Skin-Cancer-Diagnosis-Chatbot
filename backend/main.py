@@ -16,6 +16,11 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 import os
+import os
+import requests
+from pathlib import Path
+from tensorflow.keras.models import load_model
+
 
 load_dotenv()
 
@@ -30,7 +35,21 @@ azure_client = ChatCompletionsClient(
 
 
 app = FastAPI()
-model = tf.keras.models.load_model("model/best_model.keras")
+
+def download_model():
+    model_url = "https://drive.google.com/uc?export=download&id=1zN6KmX_vY9R5XqE8oGjwa-9X8TYN4JFL"
+    model_path = Path("model/best_model.keras")
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if not model_path.exists():
+        print("Downloading model...")
+        response = requests.get(model_url)
+        with open(model_path, "wb") as f:
+            f.write(response.content)
+        print("Model downloaded.")
+
+download_model()
+model = load_model("model/best_model.keras")
 
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
