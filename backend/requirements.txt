@@ -1,6 +1,6 @@
-keras==3.3.3
-keras-cv==0.7.1
-tensorflow-cpu==2.16.1
+tensorflow==2.15.0
+keras==2.15.0
+keras-cv==0.6.1
 numpy
 aiohttp
 pillow
