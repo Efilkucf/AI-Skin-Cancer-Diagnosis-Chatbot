@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skin Cancer AI Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="Screenshot 2025-06-22 120352.png" class="logo" />
+      <div>
+        <h1>Skin Cancer AI Agent</h1>
+        <p>AI-Powered Dermatology Analysis</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="upload-section">
+        <h2>📤 Image Analysis</h2>
+        <div class="upload-box">
+          <input type="file" id="imageInput" accept="image/*" hidden />
+          <label for="imageInput" class="upload-area">
+            <div class="upload-icon">⬆️</div>
+            <h3>Upload Skin Image</h3>
+            <p>Drag and drop your image here, or click to browse files</p>
+            <ul>
+              <li>• Supported formats: JPG, PNG, WEBP</li>
+              <li>• Maximum file size: 10MB</li>
+              <li>• For best results, use clear, well-lit images</li>
+            </ul>
+          </label>
+        </div>
+      </section>
+
+      <section class="chat-section">
+        <h2>💬 AI Assistant</h2>
+        <div class="chat-box" id="chatBox">
+          <div class="message bot">
+            <div class="bubble">
+              Hello! I'm your AI dermatology assistant. Upload an image for skin cancer analysis or ask me any questions about dermatology.
+              <span class="timestamp">11:47 PM</span>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chatInput" placeholder="Ask about dermatology or skin health..." />
+          <button id="sendBtn">Send</button>
+        </div>
+        <p class="tip">💡 Tip: Upload an image first for skin analysis, then ask follow-up questions</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

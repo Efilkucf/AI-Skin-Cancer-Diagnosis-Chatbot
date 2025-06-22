@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+aiohttp
+python-multipart
+pillow
+numpy
+tensorflow
+azure-core
+@azure-rest/ai-inference
+python-dotenv

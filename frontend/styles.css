@@ -1,0 +1,213 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6fb;
+  color: #1f2937;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #3b2f88;
+}
+
+.header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Layout */
+.main {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.upload-section, .chat-section {
+  flex: 1;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.upload-section h2,
+.chat-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Upload UI */
+.upload-box {
+  border: 2px dashed #a5b4fc;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 2rem;
+  background-color: #eef2ff;
+}
+
+.upload-area {
+  display: block;
+  cursor: pointer;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.upload-area h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.upload-area p {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.upload-area ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Chat */
+.chat-box {
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 1rem;
+}
+
+.bubble {
+  background-color: #f3f4f6;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  max-width: 90%;
+  position: relative;
+}
+
+
+.timestamp {
+  display: block;
+  font-size: 0.7rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+/* Chat input */
+.chat-input {
+  display: flex;
+  margin-top: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.chat-input button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #4f46e5;
+}
+
+.tip {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* Prediction Preview Bubble */
+.bubble-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 1rem;
+  background-color: #e8f0fe;
+  border-radius: 1rem;
+  flex-wrap: wrap;
+}
+
+.prediction-text {
+  flex: 1;
+  font-size: 14px;
+  color: #222;
+  max-width: 60%;
+}
+
+
+
+/* Timestamp for bubble-flex */
+.bubble .timestamp {
+  display: block;
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 8px;
+}
+
+
+
+
+
+.user .bubble {
+  background-color: #dbeafe;
+  text-align: right;
+  margin-left: auto;
+}
+
+.bot .bubble {
+  background-color: #f3f4f6;
+  text-align: left;
+  margin-right: auto;
+}
+
+.preview-image {
+  max-width: 250px;
+  max-height: 200px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
