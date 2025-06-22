@@ -9,3 +9,4 @@ fastapi
 uvicorn
 python-multipart
 gdown
+azure-ai-inference==1.0.0b1
