@@ -31,3 +31,8 @@ It combines a deep learning model (EfficientNetV2) for image classification and 
 
 ---
 
+## output
+
+<img width="1326" height="804" alt="Screenshot 2025-06-21 235114" src="https://github.com/user-attachments/assets/d4074468-842e-42de-a3f2-e07b6fd5a842" />
+<img width="1889" height="945" alt="Screenshot 2025-06-22 120726" src="https://github.com/user-attachments/assets/901646f2-9204-41c7-b2c1-ec977f354fc4" />
+<img width="1887" height="943" alt="Screenshot 2025-06-22 120744" src="https://github.com/user-attachments/assets/e0baa0f7-3fb7-426d-95c9-f68d87227ea0" />
