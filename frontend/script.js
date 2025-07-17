@@ -3,6 +3,8 @@ const chatInput = document.getElementById("chatInput");
 const sendBtn = document.getElementById("sendBtn");
 const chatBox = document.getElementById("chatBox");
 
+const backendUrl = "https://ai-skin-cancer-diagnosis-chatbot-1.onrender.com";
+
 let uploadedImage = null;
 
 imageInput.addEventListener("change", () => {
@@ -50,7 +52,7 @@ function sendToPredict(targetBubble) {
   const formData = new FormData();
   formData.append("file", uploadedImage);
 
-  fetch("http://127.0.0.1:8000/predict", {
+  fetch("${backendUrl}/predict", {
     method: "POST",
     body: formData,
   })
@@ -71,7 +73,7 @@ function sendToPredict(targetBubble) {
 function sendToAsk() {
   const loadingMsg = appendMessage("bot", "💬 Generating answer...");
 
-  fetch("http://127.0.0.1:8000/ask", {
+  fetch("${backendUrl}/ask", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ chat_history: getChatHistory() }),
