@@ -18,8 +18,7 @@ from azure.ai.inference import ChatCompletionsClient
 from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 from typing import List
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+# Removed StaticFiles and FileResponse imports - not needed for API-only
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -94,19 +93,18 @@ def get_model():
 # Download model at startup
 download_model()
 
-# Mount frontend static files
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+# No static file mounting needed for API-only deployment
 
 @app.get("/")
 def read_root():
-    return FileResponse("frontend/index.html")
+    return FileResponse("../frontend/index.html")
 
-# CORS middleware
+# CORS middleware - Updated for separate frontend deployment
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Update this to your frontend URL later
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
