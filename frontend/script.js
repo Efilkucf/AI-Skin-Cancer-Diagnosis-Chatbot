@@ -52,7 +52,7 @@ function sendToPredict(targetBubble) {
   const formData = new FormData();
   formData.append("file", uploadedImage);
 
-  fetch("${backendUrl}/predict", {
+  fetch('${backendUrl}/predict', {
     method: "POST",
     body: formData,
   })
@@ -73,7 +73,7 @@ function sendToPredict(targetBubble) {
 function sendToAsk() {
   const loadingMsg = appendMessage("bot", "💬 Generating answer...");
 
-  fetch("${backendUrl}/ask", {
+  fetch('${backendUrl}/ask', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ chat_history: getChatHistory() }),
