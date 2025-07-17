@@ -93,11 +93,6 @@ def get_model():
 # Download model at startup
 download_model()
 
-# No static file mounting needed for API-only deployment
-
-@app.get("/")
-def read_root():
-    return FileResponse("../frontend/index.html")
 
 # CORS middleware - Updated for separate frontend deployment
 app.add_middleware(
