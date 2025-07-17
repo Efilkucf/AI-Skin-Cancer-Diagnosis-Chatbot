@@ -134,8 +134,8 @@ async def predict(file: UploadFile = File(...)):
         # Create dummy tabular data
         dummy_tabular = np.zeros((1, 71), dtype=np.float32)
         
-        # Make prediction
-        prediction = model.predict([dummy_tabular, image_arr], verbose=0)
+        # Make prediction 
+        prediction =model.predict({"features": dummy_tabular, "images": image_arr}, verbose=0)
         prob = float(prediction[0][0])
         label = int(round(prob))
         diagnosis = "Malignant" if label == 1 else "Benign"
